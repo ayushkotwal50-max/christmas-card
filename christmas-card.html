@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Christmas Card for Hiya</title>
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(160deg, #0b0000, #2b0000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Georgia, serif;
+    color: white;
+    overflow: hidden;
+}
+.card {
+    width: 420px;
+    padding: 40px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.1);
+    text-align: center;
+    box-shadow: 0 0 40px rgba(255,0,0,0.3);
+    position: relative;
+    z-index: 2;
+}
+h1 { color: #ffb3b3; }
+p { font-size: 18px; line-height: 1.7; margin: 25px 0; }
+.btn {
+    padding: 10px 25px;
+    border-radius: 30px;
+    background: #b30000;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+}
+.heart { font-size: 40px; color: #ff4d6d; margin: 20px 0; }
+.snow { position: fixed; top: -10px; color: white; font-size: 14px; animation: fall linear infinite; }
+@keyframes fall { to { transform: translateY(110vh); } }
+</style>
+</head>
+<body>
+
+<audio id="music" autoplay loop>
+    <source src="snowman.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+    <h1>🎄 Christmas Thoughts for Hiya 🎄</h1>
+    <div id="step1">
+        <p>Christmas arrives softly,<br>carrying memories of the people<br>who stayed in our thoughts all year.</p>
+        <div class="btn" onclick="nextStep()">Next</div>
+    </div>
+    <div id="step2" style="display:none;">
+        <p>Not every connection is equal,<br>not every feeling is returned,<br>yet some bonds remain deeply meaningful.</p>
+        <div class="heart">❤️</div>
+        <div class="btn" onclick="nextStep()">Next</div>
+    </div>
+    <div id="step3" style="display:none;">
+        <p>
+            Hiya, you are the one I trust the most.<br>
+            Even though I know you may not care the same way,<br>
+            thank you for being there<br>
+            and for helping me for so long.
+        </p>
+        <div class="heart">✨</div>
+        <p><strong>Merry Christmas.</strong></p>
+    </div>
+</div>
+
+<script>
+// Snow animation
+for (let i = 0; i < 40; i++) {
+    let snow = document.createElement("div");
+    snow.className = "snow";
+    snow.innerHTML = "❄";
+    snow.style.left = Math.random() * 100 + "vw";
+    snow.style.animationDuration = 3 + Math.random() * 5 + "s";
+    snow.style.fontSize = 10 + Math.random() * 20 + "px";
+    document.body.appendChild(snow);
+}
+
+// Step navigation
+let currentStep = 1;
+function nextStep() {
+    document.getElementById(`step${currentStep}`).style.display = "none";
+    currentStep++;
+    document.getElementById(`step${currentStep}`).style.display = "block";
+}
+</script>
+
+</body>
+</html>
